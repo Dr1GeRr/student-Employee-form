@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form</title>
+    <style>
+        /* Style for the body to center the form and provide a background color */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4; /* Light grey background */
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Full viewport height */
+        }
+
+        /* Container for the form to add padding, background, and shadow */
+        .container {
+            background-color: #fff; /* White background */
+            padding: 20px; /* Padding inside the container */
+            border-radius: 8px; /* Rounded corners */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+            max-width: 500px; /* Maximum width */
+            width: 100%; /* Full width */
+            box-sizing: border-box; /* Include padding in the width */
+            text-align: center; /* Center the text inside the container */
+        }
+
+        /* Style for the heading */
+        h1 {
+            color: #333; /* Dark grey text */
+            margin-bottom: 20px; /* Space below the heading */
+        }
+
+        /* Align form elements to the left */
+        form {
+            text-align: left; /* Align form text to the left */
+        }
+
+        /* Style for labels */
+        label {
+            display: block; /* Make label a block element */
+            margin-bottom: 8px; /* Space below the label */
+            font-weight: bold; /* Bold text */
+        }
+
+        /* Style for input, textarea, and select elements */
+        input[type="text"], textarea, select {
+            width: 100%; /* Full width */
+            padding: 10px; /* Padding inside the input */
+            margin-bottom: 20px; /* Space below each input */
+            border: 1px solid #ccc; /* Light grey border */
+            border-radius: 4px; /* Rounded corners */
+            box-sizing: border-box; /* Include padding in the width */
+        }
+
+        /* Style for radio buttons and checkboxes */
+        .form-group.inline {
+            display: flex;
+            align-items: center;
+        }
+        .form-group.inline label {
+            margin-bottom: 0;
+            margin-right: 10px;
+            font-weight: normal;
+        }
+
+        /* Style for the submit button */
+        input[type="submit"] {
+            background-color: #4CAF50; /* Green background */
+            color: white; /* White text */
+            border: none; /* No border */
+            cursor: pointer; /* Pointer cursor on hover */
+            transition: background-color 0.3s ease; /* Smooth transition */
+            padding: 10px 20px; /* Padding inside the button */
+            border-radius: 4px; /* Rounded corners */
+        }
+
+        /* Hover effect for the submit button */
+        input[type="submit"]:hover {
+            background-color: #45a049; /* Darker green background on hover */
+        }
+        
+        /* Error message styling */
+        .error {
+            color: red;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Student Registration Form</h1>
+
+        <form id="registrationForm">
+            <div class="form-group">
+                <label for="student_id">Student ID:</label>
+                <input type="text" id="student_id" name="student_id" required>
+                <small id="studentIdError" class="error" style="display:none;">Student ID must be numeric.</small>
+            </div>
+            
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                <small id="nameError" class="error" style="display:none;">Name must not contain numbers.</small>
+            </div>
+            
+            <div class="form-group">
+                <label for="department">Department:</label>
+                <input type="text" id="department" name="department" required>
+                <small id="departmentError" class="error" style="display:none;">Department must contain only letters.</small>
+            </div>
+            
+            <div class="form-group">
+                <label>Gender:</label>
+                <div class="form-group inline">
+                    <input type="radio" id="male" name="gender" value="male">
+                    <label for="male">Male</label>
+                </div>
+                <div class="form-group inline">
+                    <input type="radio" id="female" name="gender" value="female">
+                    <label for="female">Female</label>
+                </div>
+                <div class="form-group inline">
+                    <input type="radio" id="other" name="gender" value="other">
+                    <label for="other">Other</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Optional Subjects:</label>
+                <div class="form-group inline">
+                    <input type="checkbox" id="math" name="optional_subjects" value="math">
+                    <label for="math">Math</label>
+                </div>
+                <div class="form-group inline">
+                    <input type="checkbox" id="science" name="optional_subjects" value="science">
+                    <label for="science">Science</label>
+                </div>
+                <div class="form-group inline">
+                    <input type="checkbox" id="history" name="optional_subjects" value="history">
+                    <label for="history">History</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea id="description" name="description" rows="3" maxlength="50" placeholder="Enter description (max 50 characters)"></textarea>
+            </div>
+            
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            // Retrieve form values
+            var studentId = document.getElementById('student_id').value;
+            var name = document.getElementById('name').value;
+            var department = document.getElementById('department').value;
+            var gender = document.querySelector('input[name="gender"]:checked');
+            var description = document.getElementById('description').value;
+
+            // Validation regex patterns
+            var idPattern = /^\d+$/;
+            var namePattern = /^[a-zA-Z\s]+$/;
+            var departmentPattern = /^[a-zA-Z\s]+$/;
+
+            // Error elements
+            var studentIdError = document.getElementById('studentIdError');
+            var nameError = document.getElementById('nameError');
+            var departmentError = document.getElementById('departmentError');
+
+            // Reset error messages
+            studentIdError.style.display = 'none';
+            nameError.style.display = 'none';
+            departmentError.style.display = 'none';
+
+            // Validation flag
+            var isValid = true;
+
+            // Validate student ID
+            if (!idPattern.test(studentId)) {
+                studentIdError.style.display = 'block';
+                isValid = false;
+            }
+
+            // Validate name
+            if (!namePattern.test(name)) {
+                nameError.style.display = 'block';
+                isValid = false;
+            }
+
+            // Validate department
+            if (!departmentPattern.test(department)) {
+                departmentError.style.display = 'block';
+                isValid = false;
+            }
+
+            // Validate gender
+            if (!gender) {
+                alert('Please select a gender.');
+                isValid = false;
+            }
+
+            // Check if any of the required fields are empty
+            if (!studentId || !name || !department || !gender || description.length > 50) {
+                alert('Please fill in all required fields.');
+                isValid = false;
+            }
+
+            // Prevent form submission if validation fails
+            if (!isValid) {
+                event.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>
