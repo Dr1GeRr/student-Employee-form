@@ -96,24 +96,28 @@
         <h1>Student Registration Form</h1>
 
         <form id="registrationForm">
+            <!-- Student ID Input Field -->
             <div class="form-group">
                 <label for="student_id">Student ID:</label>
                 <input type="text" id="student_id" name="student_id" required>
                 <small id="studentIdError" class="error" style="display:none;">Student ID must be numeric.</small>
             </div>
             
+            <!-- Name Input Field -->
             <div class="form-group">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required>
                 <small id="nameError" class="error" style="display:none;">Name must not contain numbers.</small>
             </div>
             
+            <!-- Department Input Field -->
             <div class="form-group">
                 <label for="department">Department:</label>
                 <input type="text" id="department" name="department" required>
                 <small id="departmentError" class="error" style="display:none;">Department must contain only letters.</small>
             </div>
             
+            <!-- Gender Radio Buttons -->
             <div class="form-group">
                 <label>Gender:</label>
                 <div class="form-group inline">
@@ -130,6 +134,7 @@
                 </div>
             </div>
 
+            <!-- Optional Subjects Checkboxes -->
             <div class="form-group">
                 <label>Optional Subjects:</label>
                 <div class="form-group inline">
@@ -146,11 +151,13 @@
                 </div>
             </div>
 
+            <!-- Description Textarea Field -->
             <div class="form-group">
                 <label for="description">Description:</label>
                 <textarea id="description" name="description" rows="3" maxlength="50" placeholder="Enter description (max 50 characters)"></textarea>
             </div>
             
+            <!-- Submit Button -->
             <input type="submit" value="Submit">
         </form>
     </div>
