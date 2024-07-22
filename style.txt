@@ -1,0 +1,65 @@
+/* Style for the body to center the form and provide a background color */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4; /* Light grey background */
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+}
+
+/* Container for the form to add padding, background, and shadow */
+.container {
+    background-color: #fff; /* White background */
+    padding: 20px; /* Padding inside the container */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    max-width: 500px; /* Maximum width */
+    width: 100%; /* Full width */
+    box-sizing: border-box; /* Include padding in the width */
+    text-align: center; /* Center the text inside the container */
+}
+
+/* Style for the heading */
+h1 {
+    color: #333; /* Dark grey text */
+    margin-bottom: 20px; /* Space below the heading */
+}
+
+/* Align form elements to the left */
+form {
+    text-align: left; /* Align form text to the left */
+}
+
+/* Style for labels */
+label {
+    display: block; /* Make label a block element */
+    margin-bottom: 8px; /* Space below the label */
+    font-weight: bold; /* Bold text */
+}
+
+/* Style for input, textarea, and select elements */
+input, textarea, select {
+    width: 100%; /* Full width */
+    padding: 10px; /* Padding inside the input */
+    margin-bottom: 20px; /* Space below each input */
+    border: 1px solid #ccc; /* Light grey border */
+    border-radius: 4px; /* Rounded corners */
+    box-sizing: border-box; /* Include padding in the width */
+}
+
+/* Style for the submit button */
+input[type="submit"] {
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    border: none; /* No border */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+/* Hover effect for the submit button */
+input[type="submit"]:hover {
+    background-color: #45a049; /* Darker green background on hover */
+}
