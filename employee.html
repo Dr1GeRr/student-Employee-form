@@ -3,83 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Registration Form</title>
+    <title>Employee Registration Form</title>
     <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        .error {
-            color: red;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to the custom CSS file -->
 </head>
 <body>
 <div class="container mt-5">
-    <h1 class="text-center mb-4">Student Registration Form</h1>
-    <form id="registrationForm" novalidate>
-        <!-- Student ID Input Field -->
+    <!-- Page Header -->
+    <h1 class="text-center mb-4">Employee Registration Form</h1>
+
+    <!-- Registration Form -->
+    <form id="employeeRegistrationForm" action="https://eou7mde5kibb72w.m.pipedream.net" method="post" onsubmit="return validateForm()">
         <div class="form-group">
-            <label for="student_id">Student ID:</label>
-            <input type="text" class="form-control" id="student_id" name="student_id" required>
-            <div class="invalid-feedback">Student ID must be numeric.</div>
+            <label for="employee_id">Employee ID:</label>
+            <input type="text" class="form-control" id="employee_id" name="employee_id" required="required">
+            <small id="employeeIdError" class="form-text text-danger" style="display:none;">Employee ID must be numeric.</small>
         </div>
         
-        <!-- Name Input Field -->
         <div class="form-group">
             <label for="name">Name:</label>
-            <input type="text" class="form-control" id="name" name="name" required>
-            <div class="invalid-feedback">Name must not contain numbers.</div>
+            <input type="text" class="form-control" id="name" name="name" required="required">
+            <small id="nameError" class="form-text text-danger" style="display:none;">Name must not contain numbers.</small>
         </div>
         
-        <!-- Department Input Field -->
         <div class="form-group">
             <label for="department">Department:</label>
-            <input type="text" class="form-control" id="department" name="department" required>
-            <div class="invalid-feedback">Department must contain only letters.</div>
+            <input type="text" class="form-control" id="department" name="department" required="required">
+            <small id="departmentError" class="form-text text-danger" style="display:none;">Department must contain only letters.</small>
         </div>
         
-        <!-- Gender Radio Buttons -->
         <div class="form-group">
-            <label>Gender:</label>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" id="male" name="gender" value="male" required>
-                <label class="form-check-label" for="male">Male</label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" id="female" name="gender" value="female" required>
-                <label class="form-check-label" for="female">Female</label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="radio" id="other" name="gender" value="other" required>
-                <label class="form-check-label" for="other">Other</label>
-            </div>
-            <div class="invalid-feedback">Please select a gender.</div>
-        </div>
-
-        <!-- Optional Subjects Checkboxes -->
-        <div class="form-group">
-            <label>Optional Subjects:</label>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="math" name="optional_subjects" value="math">
-                <label class="form-check-label" for="math">Math</label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="science" name="optional_subjects" value="science">
-                <label class="form-check-label" for="science">Science</label>
-            </div>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="history" name="optional_subjects" value="history">
-                <label class="form-check-label" for="history">History</label>
-            </div>
-        </div>
-
-        <!-- Description Textarea Field -->
-        <div class="form-group">
-            <label for="description">Description:</label>
-            <textarea class="form-control" id="description" name="description" rows="3" maxlength="50" placeholder="Enter description (max 50 characters)"></textarea>
-            <div class="invalid-feedback">Description must be less than 50 characters.</div>
+            <label for="job_role">Job Role:</label>
+            <select class="form-control" id="job_role" name="job_role" required="required">
+                <option value="">Select</option>
+                <option value="developer">Developer</option>
+                <option value="designer">Designer</option>
+                <option value="manager">Manager</option>
+                <option value="analyst">Analyst</option>
+            </select>
         </div>
         
-        <!-- Submit Button -->
+        <div class="form-group">
+            <label for="employment_type">Employment Type:</label>
+            <select class="form-control" id="employment_type" name="employment_type" required="required">
+                <option value="">Select</option>
+                <option value="full-time">Full-Time</option>
+                <option value="part-time">Part-Time</option>
+                <option value="contract">Contract</option>
+                <option value="intern">Intern</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="gender">Gender:</label>
+            <select class="form-control" id="gender" name="gender" required="required">
+                <option value="">Select</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+        
         <button type="submit" class="btn btn-primary btn-block">Submit</button>
     </form>
 </div>
@@ -88,60 +73,53 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="script.js"></script> <!-- Link to the custom JS file -->
+
 <script>
-    // Form validation
-    (function() {
-        'use strict';
-        window.addEventListener('load', function() {
-            var form = document.getElementById('registrationForm');
-            form.addEventListener('submit', function(event) {
-                if (form.checkValidity() === false) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                }
-                form.classList.add('was-validated');
-                
-                // Custom validation for specific fields
-                var studentId = document.getElementById('student_id').value;
-                var name = document.getElementById('name').value;
-                var department = document.getElementById('department').value;
-                var description = document.getElementById('description').value;
-                
-                // Validation regex patterns
-                var idPattern = /^\d+$/;
-                var namePattern = /^[a-zA-Z\s]+$/;
-                var departmentPattern = /^[a-zA-Z\s]+$/;
+    function validateForm() {
+        // Get the input values
+        var employeeId = document.getElementById('employee_id').value;
+        var name = document.getElementById('name').value;
+        var department = document.getElementById('department').value;
 
-                // Validate student ID
-                if (!idPattern.test(studentId)) {
-                    document.getElementById('student_id').setCustomValidity('Invalid');
-                } else {
-                    document.getElementById('student_id').setCustomValidity('');
-                }
+        // Regex patterns
+        var idPattern = /^\d+$/;
+        var namePattern = /^[a-zA-Z\s]+$/;
+        var departmentPattern = /^[a-zA-Z\s]+$/;
 
-                // Validate name
-                if (!namePattern.test(name)) {
-                    document.getElementById('name').setCustomValidity('Invalid');
-                } else {
-                    document.getElementById('name').setCustomValidity('');
-                }
+        // Error elements
+        var employeeIdError = document.getElementById('employeeIdError');
+        var nameError = document.getElementById('nameError');
+        var departmentError = document.getElementById('departmentError');
 
-                // Validate department
-                if (!departmentPattern.test(department)) {
-                    document.getElementById('department').setCustomValidity('Invalid');
-                } else {
-                    document.getElementById('department').setCustomValidity('');
-                }
+        // Reset error messages
+        employeeIdError.style.display = 'none';
+        nameError.style.display = 'none';
+        departmentError.style.display = 'none';
 
-                // Validate description length
-                if (description.length > 50) {
-                    document.getElementById('description').setCustomValidity('Invalid');
-                } else {
-                    document.getElementById('description').setCustomValidity('');
-                }
-            }, false);
-        }, false);
-    })();
+        // Validation flag
+        var isValid = true;
+
+        // Validate employee ID
+        if (!idPattern.test(employeeId)) {
+            employeeIdError.style.display = 'block';
+            isValid = false;
+        }
+
+        // Validate name
+        if (!namePattern.test(name)) {
+            nameError.style.display = 'block';
+            isValid = false;
+        }
+
+        // Validate department
+        if (!departmentPattern.test(department)) {
+            departmentError.style.display = 'block';
+            isValid = false;
+        }
+
+        return isValid;
+    }
 </script>
 </body>
 </html>
