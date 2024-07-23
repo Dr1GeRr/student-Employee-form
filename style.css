@@ -41,13 +41,24 @@ label {
 }
 
 /* Style for input, textarea, and select elements */
-input, textarea, select {
+input[type="text"], textarea, select {
     width: 100%; /* Full width */
     padding: 10px; /* Padding inside the input */
     margin-bottom: 20px; /* Space below each input */
     border: 1px solid #ccc; /* Light grey border */
     border-radius: 4px; /* Rounded corners */
     box-sizing: border-box; /* Include padding in the width */
+}
+
+/* Style for radio buttons and checkboxes */
+.form-group.inline {
+    display: flex;
+    align-items: center;
+}
+.form-group.inline label {
+    margin-bottom: 0;
+    margin-right: 10px;
+    font-weight: normal;
 }
 
 /* Style for the submit button */
@@ -57,9 +68,18 @@ input[type="submit"] {
     border: none; /* No border */
     cursor: pointer; /* Pointer cursor on hover */
     transition: background-color 0.3s ease; /* Smooth transition */
+    padding: 10px 20px; /* Padding inside the button */
+    border-radius: 4px; /* Rounded corners */
 }
 
 /* Hover effect for the submit button */
 input[type="submit"]:hover {
     background-color: #45a049; /* Darker green background on hover */
+}
+
+/* Error message styling */
+.error {
+    color: red;
+    font-size: 0.9em;
+    display: none; /* Hide error messages by default */
 }
