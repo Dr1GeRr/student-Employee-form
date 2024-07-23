@@ -101,19 +101,19 @@
         <div class="form-group">
             <label for="employee_id">Employee ID:</label>
             <input type="text" id="employee_id" name="employee_id" required="required">
-            <small id="employeeIdError" class="form-text">Employee ID must be numeric.</small>
+            <small id="employeeIdError" class="error">Employee ID must be numeric.</small>
         </div>
         
         <div class="form-group">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required="required">
-            <small id="nameError" class="form-text">Name must not contain numbers.</small>
+            <small id="nameError" class="error">Name must not contain numbers.</small>
         </div>
         
         <div class="form-group">
             <label for="department">Department:</label>
             <input type="text" id="department" name="department" required="required">
-            <small id="departmentError" class="form-text">Department must contain only letters.</small>
+            <small id="departmentError" class="error">Department must contain only letters.</small>
         </div>
         
         <div class="form-group">
@@ -148,11 +148,9 @@
             </select>
         </div>
         
-        <button type="submit" class="btn btn-block">Submit</button>
+        <input type="submit" value="Submit">
     </form>
 </div>
-
-<script src="script.js"></script> <!-- Link to the custom JS file -->
 
 <script>
     function validateForm() {
