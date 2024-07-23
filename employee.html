@@ -4,38 +4,87 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Employee Registration Form</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css"> <!-- Link to the custom CSS file -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+        .form-text {
+            color: red;
+            display: none;
+        }
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            text-align: center;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .btn-block {
+            width: 100%;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-<div class="container mt-5">
+<div class="container">
     <!-- Page Header -->
-    <h1 class="text-center mb-4">Employee Registration Form</h1>
+    <h1>Employee Registration Form</h1>
 
     <!-- Registration Form -->
     <form id="employeeRegistrationForm" action="https://eou7mde5kibb72w.m.pipedream.net" method="post" onsubmit="return validateForm()">
         <div class="form-group">
             <label for="employee_id">Employee ID:</label>
-            <input type="text" class="form-control" id="employee_id" name="employee_id" required="required">
-            <small id="employeeIdError" class="form-text text-danger" style="display:none;">Employee ID must be numeric.</small>
+            <input type="text" id="employee_id" name="employee_id" required="required">
+            <small id="employeeIdError" class="form-text">Employee ID must be numeric.</small>
         </div>
         
         <div class="form-group">
             <label for="name">Name:</label>
-            <input type="text" class="form-control" id="name" name="name" required="required">
-            <small id="nameError" class="form-text text-danger" style="display:none;">Name must not contain numbers.</small>
+            <input type="text" id="name" name="name" required="required">
+            <small id="nameError" class="form-text">Name must not contain numbers.</small>
         </div>
         
         <div class="form-group">
             <label for="department">Department:</label>
-            <input type="text" class="form-control" id="department" name="department" required="required">
-            <small id="departmentError" class="form-text text-danger" style="display:none;">Department must contain only letters.</small>
+            <input type="text" id="department" name="department" required="required">
+            <small id="departmentError" class="form-text">Department must contain only letters.</small>
         </div>
         
         <div class="form-group">
             <label for="job_role">Job Role:</label>
-            <select class="form-control" id="job_role" name="job_role" required="required">
+            <select id="job_role" name="job_role" required="required">
                 <option value="">Select</option>
                 <option value="developer">Developer</option>
                 <option value="designer">Designer</option>
@@ -46,7 +95,7 @@
         
         <div class="form-group">
             <label for="employment_type">Employment Type:</label>
-            <select class="form-control" id="employment_type" name="employment_type" required="required">
+            <select id="employment_type" name="employment_type" required="required">
                 <option value="">Select</option>
                 <option value="full-time">Full-Time</option>
                 <option value="part-time">Part-Time</option>
@@ -57,7 +106,7 @@
         
         <div class="form-group">
             <label for="gender">Gender:</label>
-            <select class="form-control" id="gender" name="gender" required="required">
+            <select id="gender" name="gender" required="required">
                 <option value="">Select</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
@@ -65,14 +114,10 @@
             </select>
         </div>
         
-        <button type="submit" class="btn btn-primary btn-block">Submit</button>
+        <button type="submit" class="btn btn-block">Submit</button>
     </form>
 </div>
 
-<!-- Bootstrap JS and dependencies -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="script.js"></script> <!-- Link to the custom JS file -->
 
 <script>
